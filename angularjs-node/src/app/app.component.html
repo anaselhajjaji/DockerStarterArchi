@@ -4,9 +4,20 @@
     Welcome to {{ title }}
   </h1>
 </div>
-<!--mat-form-field>
-    <input matInput placeholder="Simple Input">
-</mat-form-field-->
+
+<h2>
+  Create New User
+</h2>
+<form class="example-form">
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="User Name">
+  </mat-form-field>
+  <button mat-button>Send</button>
+</form>
+
+<h2>
+  Listing existing users
+</h2>
 <table mat-table [dataSource]="data" class="mat-elevation-z8">
   <!--- Note that these columns can be defined in any order.
         The actual rendered columns are set as a property on the row definition" -->
