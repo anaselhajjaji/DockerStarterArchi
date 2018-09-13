@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { AppService } from './app.service';
 
 @Component({
@@ -7,11 +7,12 @@ import { AppService } from './app.service';
   styleUrls: ['./app.component.css'],
   providers: [AppService]
 })
+
 export class AppComponent {
   title = 'Users List App';
   displayedColumns: string[] = ['position', 'name'];
   data: any = []
-  
+
   constructor(public appService: AppService) { }
 
   ngOnInit() {
@@ -35,12 +36,13 @@ export class AppComponent {
   }
 
   /* method to call post-api from app.service */
-  submitUser() {
+  submitUser(username) {
+    console.log(username);
     try {
       let user = {
-        uname: "blabla"
+        uname: username
       }
-      // console.log(author,"author")
+      
       this.appService.submitUser(user)
         .subscribe(resp => {
           console.log(resp, "res");

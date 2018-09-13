@@ -10,9 +10,9 @@
 </h2>
 <form class="example-form">
   <mat-form-field class="example-full-width">
-    <input matInput placeholder="User Name">
+    <input matInput [(ngModel)]="username" name="username" placeholder="User Name">
   </mat-form-field>
-  <button mat-raised-button (click)="submitUser()">Send</button>
+  <button mat-raised-button (click)="submitUser(username)">Send</button>
 </form>
 
 <h2>
