@@ -1,2 +1,6 @@
 # WebArchi
-Samples using Docker, nodeJS and AngularJS
+
+Sample app using:
+
+- PostgreSQL Docker Node
+- NodeJS Docker Node

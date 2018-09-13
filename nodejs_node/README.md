@@ -1,4 +1,4 @@
-# nodejs Docker Node
+# NodeJS Docker Node
 
 To build the docker image:
 
