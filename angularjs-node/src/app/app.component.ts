@@ -8,7 +8,8 @@ import { AppService } from './app.service';
   providers: [AppService]
 })
 export class AppComponent {
-  title = 'angularjs-node';
+  title = 'Users List App';
+  displayedColumns: string[] = ['position', 'name'];
 
   data: any = []
   
