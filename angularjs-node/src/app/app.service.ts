@@ -13,4 +13,9 @@ export class AppService {
   getUsers() {
     return this.http.get('https://api.github.com/users');
   }
+
+  /* Uses http.post() to submit data from a single API endpoint */
+  submitUser(data) {
+    return this.http.post('http://httpbin.org/post', data);
+  }
 }

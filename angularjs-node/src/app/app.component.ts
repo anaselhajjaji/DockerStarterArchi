@@ -10,7 +10,6 @@ import { AppService } from './app.service';
 export class AppComponent {
   title = 'Users List App';
   displayedColumns: string[] = ['position', 'name'];
-
   data: any = []
   
   constructor(public appService: AppService) { }
@@ -26,6 +25,25 @@ export class AppComponent {
         .subscribe(resp => {
           console.log(resp, "res");
           this.data = resp
+        },
+          error => {
+            console.log(error, "error");
+          })
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+  /* method to call post-api from app.service */
+  submitUser() {
+    try {
+      let user = {
+        uname: "blabla"
+      }
+      // console.log(author,"author")
+      this.appService.submitUser(user)
+        .subscribe(resp => {
+          console.log(resp, "res");
         },
           error => {
             console.log(error, "error");
