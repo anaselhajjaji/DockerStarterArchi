@@ -1,0 +1,17 @@
+{
+  "requires": true,
+  "lockfileVersion": 1,
+  "dependencies": {
+    "express": "^4.16.3",
+    "pg": "^7.4.3"
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "name": "postgres_rest",
+  "version": "1.0.0",
+  "main": "server.js",
+  "author": "Anas EL HAJJAJI",
+  "license": "ISC",
+  "description": "REST Sample"
+}
