@@ -12,7 +12,7 @@ export class AppService {
   /* Uses http.get() to load data from a single API endpoint */
   getUsers() {
     var getUrl = 'http://172.18.0.3:8080/api/list';
-    console.log("Submitting the user to the URL: %s", getUrl);
+    console.log("Get users from the URL: %s", getUrl);
     return this.http.get(getUrl);
   }
 
