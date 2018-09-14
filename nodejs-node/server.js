@@ -12,7 +12,7 @@ app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 var PGUSER = 'anas'
 var PGUSERPWD = 'anaspwd'
 var PGDATABASE = 'usersdb'
-var PGHOST = '172.18.0.2' // get the ip address from docker
+var PGHOST = 'postgres-database-service' // get the ip address from docker
 
 var config = {
   host: PGHOST,

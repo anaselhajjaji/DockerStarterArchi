@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+  postgres-database-service:
+    build: ./postgresql-node
+    ports:
+      - 5432:5432
+
+  nodejs-rest-api-service:
+    build: ./nodejs-node
+    volumes:
+      - ./nodejs-node:/usr/src/app
+    ports:
+      - 8080:8080
+    depends_on:
+      - postgres-database-service
+
+  angular-website:
+    build: ./angularjs-node
+    volumes:
+      - ./angularjs-node/dist/angularjs-node:/usr/share/nginx/html
+    ports:
+      - 80:80
+    depends_on:
+      - nodejs-rest-api-service
