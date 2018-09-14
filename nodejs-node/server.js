@@ -1,8 +1,10 @@
 var express = require('express');
 var pg = require('pg');
 var bodyParser = require('body-parser');
+var cors = require('cors');
 var app = express();
 
+app.use(cors()); // Enable All CORS Requests
 app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 
@@ -24,32 +26,14 @@ var config = {
 var pool = new pg.Pool(config)
 var myClient
 
-// Add headers
-app.use(function (req, res, next) {
-
-  // Website you wish to allow to connect
-  res.setHeader('Access-Control-Allow-Origin', '*');
-
-  // Request methods you wish to allow
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-
-  // Request headers you wish to allow
-  res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
-
-  // Set to true if you need the website to include cookies in the requests sent
-  // to the API (e.g. in case you use sessions)
-  res.setHeader('Access-Control-Allow-Credentials', false);
-
-  // Pass to next layer of middleware
-  next();
-});
-
 app.post('/api/insert', function(req, res) {
+  console.log("-- POST request received.");
   var username = req.body.uname;
-  
+  console.log("-- Inserting new user: %s", username);
+
   pool.connect(function (err, client, done) {
     if (err) {
-      console.error('Error connecting: ' + err.stack);
+      console.error('Error connecting: %s', err.stack);
       res.send('Error: ' + err.stack);
     }
     else {
@@ -59,6 +43,8 @@ app.post('/api/insert', function(req, res) {
         if (err) {
           console.error('Error: ' + err.stack);
           res.send('Error: ' + err.stack);
+        } else {
+          console.log("-- User %s successfully inserted.", username);
         }
       })
     }
@@ -68,10 +54,10 @@ app.post('/api/insert', function(req, res) {
 });
 
 app.get('/api/list', function (req, res) {
-   
+  console.log("-- GET request received.");
   pool.connect(function (err, client, done) {
     if (err) {
-      console.error('Error connecting: ' + err.stack);
+      console.error('Error connecting: %s', err.stack);
       res.send('Error: ' + err.stack);
     }
     else {
@@ -83,7 +69,9 @@ app.get('/api/list', function (req, res) {
           res.send('Error: ' + err.stack);
         }
         else {
-          res.end(JSON.stringify(result.rows));
+          var json = JSON.stringify(result.rows);
+          console.log('Returning data: %s', json);
+          res.end(json);
         }
       })
     }
@@ -93,6 +81,5 @@ app.get('/api/list', function (req, res) {
 var server = app.listen(8080, function () {
   var host = server.address().address
   var port = server.address().port
-
   console.log("Example app listening at http://%s:%s", host, port)
 })
