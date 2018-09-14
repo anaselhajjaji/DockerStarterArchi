@@ -25,13 +25,13 @@
   <!-- Position Column -->
   <ng-container matColumnDef="position">
     <th mat-header-cell *matHeaderCellDef> No. </th>
-    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+    <td mat-cell *matCellDef="let element"> {{element.did}} </td>
   </ng-container>
 
   <!-- Name Column -->
   <ng-container matColumnDef="name">
     <th mat-header-cell *matHeaderCellDef> Name </th>
-    <td mat-cell *matCellDef="let element"> {{element.login}} </td>
+    <td mat-cell *matCellDef="let element"> {{element.uname}} </td>
   </ng-container>
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
