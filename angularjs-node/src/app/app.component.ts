@@ -12,6 +12,7 @@ export class AppComponent {
   title = 'Users List App';
   displayedColumns: string[] = ['position', 'name'];
   data: any = []
+  username: string
 
   constructor(public appService: AppService) { }
 
