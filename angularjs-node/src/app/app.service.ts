@@ -11,11 +11,15 @@ export class AppService {
   constructor(private http: HttpClient) { }
   /* Uses http.get() to load data from a single API endpoint */
   getUsers() {
-    return this.http.get('http://172.18.0.3:8080/api/list');
+    var getUrl = 'http://172.18.0.3:8080/api/list';
+    console.log("Submitting the user to the URL: %s", getUrl);
+    return this.http.get(getUrl);
   }
 
   /* Uses http.post() to submit data from a single API endpoint */
   submitUser(data) {
-    return this.http.post('http://172.18.0.3:8080/api/insert', data);
+    var postUrl = 'http://172.18.0.3:8080/api/insert';
+    console.log("Submitting the user to the URL: %s", postUrl);
+    return this.http.post(postUrl, data);
   }
 }
