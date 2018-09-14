@@ -22,6 +22,12 @@ COPY nginx/default.conf /etc/nginx/conf.d/
 ## Remove default nginx website
 RUN rm -rf /usr/share/nginx/html/*
 
+## Alpine docker image doesn't have bash installed by default. You will need to add following commands to get bash:
+RUN apk update && apk add bash
+
+## Install curl
+RUN apk update && apk add curl
+
 ## From 'builder' stage copy over the artifacts in dist folder to default nginx public folder
 COPY --from=builder /ng-app/dist/angularjs-node /usr/share/nginx/html
 
