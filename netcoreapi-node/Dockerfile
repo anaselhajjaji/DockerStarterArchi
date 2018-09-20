@@ -4,7 +4,7 @@ EXPOSE 80
 
 FROM microsoft/dotnet:2.1-sdk AS build
 WORKDIR /src
-COPY ["netcoreapi-node/netcoreapi-node.csproj", "netcoreapi-node/"]
+COPY ["netcoreapi-node.csproj", "netcoreapi-node/"]
 RUN dotnet restore "netcoreapi-node/netcoreapi-node.csproj"
 COPY . .
 WORKDIR "/src/netcoreapi-node"
