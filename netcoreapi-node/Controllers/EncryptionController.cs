@@ -14,7 +14,7 @@ namespace netcoreapi_node.Controllers
 
         // POST: api/Encryption
         [HttpPost]
-        public string Post([FromBody] string value)
+        public IActionResult Post([FromBody] string value)
         {
             string encrypted = EncryptText(value, EncryptionPassword);
             string decrypted = DecryptText(encrypted, EncryptionPassword);
@@ -24,7 +24,7 @@ namespace netcoreapi_node.Controllers
                 throw new Exception("Encryption failed.");
             }
 
-            return encrypted;
+            return Ok(encrypted);
         }
 
         private byte[] AES_Encrypt(byte[] bytesToBeEncrypted, byte[] passwordBytes)
