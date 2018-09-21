@@ -35,6 +35,13 @@ namespace netcoreapi_node
                 app.UseDeveloperExceptionPage();
             }
 
+            // Add the CORS
+            app.UseCors(builder =>
+                builder.WithOrigins("*")
+                    .AllowAnyOrigin()
+                    .AllowAnyHeader()
+                    .AllowAnyMethod());
+
             app.UseMvc();
         }
     }
