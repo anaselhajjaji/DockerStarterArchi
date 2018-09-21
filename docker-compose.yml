@@ -5,11 +5,16 @@ services:
     build: ./postgresql-node
     ports:
       - 5432:5432
+  
+  netcoreapi-service:
+    build: ./netcoreapi-node
+    ports:
+      - 8081:80
 
   nodejs-rest-api-service:
     build: ./nodejs-node
-    volumes:
-      - ./nodejs-node:/usr/src/app
+    #volumes:
+    #  - ./nodejs-node:/usr/src/app
     ports:
       - 8080:8080
     depends_on:
@@ -17,8 +22,8 @@ services:
 
   angular-website:
     build: ./angularjs-node
-    volumes:
-      - ./angularjs-node/dist/angularjs-node:/usr/share/nginx/html
+    #volumes:
+    #  - ./angularjs-node/dist/angularjs-node:/usr/share/nginx/html
     ports:
       - 80:80
     depends_on:
