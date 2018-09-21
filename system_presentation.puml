@@ -1,0 +1,52 @@
+@startuml
+
+package "Frontend Network (frontendnet)" {
+    node angularwebsite [
+        <b>Angular website
+        ----
+        app: angularjs-node
+    ]
+}
+
+package "Backend Network (backendnet)" {
+    node postgresdb [
+        <b>postgresdb service
+        ----
+        app: postgresql-node
+        PostgreSQL Database
+    ]
+
+    node netcoreapi [
+        <b>netcoreapi service
+        ----
+        app: netcoreapi-node
+        ASP .NET Core Web API 
+    ]
+
+    node nodejsrestapi [
+        <b>nodejsrestapi service
+        ----
+        app: nodejs-node
+        nodeJS REST API
+    ]
+
+    [nodejsrestapi] -- pgAPI
+    pgAPI -- postgresdb
+}
+
+[nodejsrestapi] -- REST_JSON_GET_USERS
+[nodejsrestapi] -- REST_JSON_POST_USER
+[netcoreapi] -- REST_JSON_POST_CIPHER_DATA
+
+component browser [
+    <b>Browser
+]
+
+[angularwebsite] -- nginx
+nginx -- browser
+
+browser -up- REST_JSON_GET_USERS
+browser -up- REST_JSON_POST_USER
+browser -up- REST_JSON_POST_CIPHER_DATA
+
+@enduml
