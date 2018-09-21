@@ -25,7 +25,7 @@ export class AppService {
     console.log("Submitting the user to the URL: %s", postUrl);
 
     const httpOptions = {
-      headers: new HttpHeaders({ 'Content-Type': 'application/json' }), responseType: 'text/plain'
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }), responseType: 'text' as 'text'
     };
 
     return this.http.post(postUrl, JSON.stringify(data), httpOptions);
