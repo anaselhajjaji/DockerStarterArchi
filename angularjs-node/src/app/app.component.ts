@@ -43,7 +43,11 @@ export class AppComponent {
     console.log(username);
     
     try {
-      this.appService.submitUser(username)
+      let user = {
+        uname: username
+      }
+
+      this.appService.submitUser(user)
         .subscribe(resp => {
           console.log(resp, "res");
         },
@@ -60,11 +64,7 @@ export class AppComponent {
   cipherUser(username) {
     console.log(username);
     try {
-      let user = {
-        uname: username
-      }
-      
-      this.appService.cipherUser(user)
+      this.appService.cipherUser(username)
         .subscribe(resp => {
           console.log(resp, "res");
           this.openSnackBar(resp.toString(), '');

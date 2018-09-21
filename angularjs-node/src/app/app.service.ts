@@ -1,10 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-};
-
 @Injectable()
 export class AppService {
 
@@ -25,8 +21,13 @@ export class AppService {
 
   /* Uses http.post() to submit data from a single API endpoint */
   cipherUser(data) {
-    var postUrl = 'http://localhost:8081/api/encryption';
+    var postUrl = 'http://netcoreapi-service:8081/api/encryption';
     console.log("Submitting the user to the URL: %s", postUrl);
-    return this.http.post(postUrl, data);
+
+    const httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }), responseType: 'text/plain'
+    };
+
+    return this.http.post(postUrl, JSON.stringify(data), httpOptions);
   }
 }
