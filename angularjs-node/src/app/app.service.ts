@@ -22,4 +22,11 @@ export class AppService {
     console.log("Submitting the user to the URL: %s", postUrl);
     return this.http.post(postUrl, data);
   }
+
+  /* Uses http.post() to submit data from a single API endpoint */
+  cipherUser(data) {
+    var postUrl = 'http://localhost:8081/api/encryption';
+    console.log("Submitting the user to the URL: %s", postUrl);
+    return this.http.post(postUrl, data);
+  }
 }

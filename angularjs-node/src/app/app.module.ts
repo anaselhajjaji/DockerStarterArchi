@@ -8,7 +8,8 @@ import { FormsModule } from '@angular/forms';
 import {
   MatTableModule,
   MatInputModule,
-  MatButtonModule
+  MatButtonModule,
+  MatSnackBarModule
 } from '@angular/material';
 
 import { AppComponent } from './app.component';
@@ -25,7 +26,8 @@ import { AppComponent } from './app.component';
     HttpClientModule,
     MatTableModule,
     MatInputModule,
-    MatButtonModule
+    MatButtonModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
