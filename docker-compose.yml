@@ -1,20 +1,30 @@
 version: '3'
 
+networks:
+  backendnet:
+    driver: bridge
+  frontendnet:
+    driver: bridge
+
 services:
   postgresdb:
     build: ./postgresql-node
+    networks:
+      - backendnet
     ports:
       - 5432:5432
   
   netcoreapi:
     build: ./netcoreapi-node
+    networks:
+      - backendnet
     ports:
       - 8081:80
 
   nodejsrestapi:
     build: ./nodejs-node
-    #volumes:
-    #  - ./nodejs-node:/usr/src/app
+    networks:
+      - backendnet
     ports:
       - 8080:8080
     depends_on:
@@ -22,10 +32,7 @@ services:
 
   angularwebsite:
     build: ./angularjs-node
-    #volumes:
-    #  - ./angularjs-node/dist/angularjs-node:/usr/share/nginx/html
+    networks:
+      - frontendnet
     ports:
       - 80:80
-    depends_on:
-      - netcoreapi
-      - nodejsrestapi
