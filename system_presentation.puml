@@ -5,6 +5,7 @@ package "Frontend Network (frontendnet)" {
         <b>Angular website
         ----
         app: angularjs-node
+        Generated with Angular CLI 6.2.1
     ]
 }
 
@@ -20,7 +21,7 @@ package "Backend Network (backendnet)" {
         <b>netcoreapi service
         ----
         app: netcoreapi-node
-        ASP .NET Core Web API 
+        ASP .NET Core 2.1 Web API 
     ]
 
     node nodejsrestapi [
