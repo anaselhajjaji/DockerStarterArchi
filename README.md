@@ -2,8 +2,8 @@ Sample app using:
 
 - PostgreSQL Docker Node
 - NodeJS Docker Node
-- AngularJS Docker Node
-- ASP .Net Core Web API Node 
+- Angular web appplication (Angular CLI 6.2.1) Docker Node
+- ASP .Net Core 2.1 Web API Node 
 
 # Using docker-compose
 
