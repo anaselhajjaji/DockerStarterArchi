@@ -1,5 +1,7 @@
 # PostgreSQL Docker Node
 
+The database will be populated using the SQL script in the file: initdb.sql
+
 To build the docker image:
 
 ```bash
@@ -24,7 +26,7 @@ To remove the container:
 docker rm postgres-node -f
 ```
 
-We can connect the container in a private network:
+The container can be connected to a private network:
 
 ```bash
 docker network create my-network
