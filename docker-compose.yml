@@ -30,6 +30,16 @@ services:
     depends_on:
       - postgresdb
 
+  springbootapi:
+    build: ./sample-springboot
+    networks:
+      - backendnet
+    ports:
+      - 8082:8080
+    command: mvn clean spring-boot:run
+    depends_on:
+      - mongodb
+
   mongodb:
     image: mongo
     networks:
