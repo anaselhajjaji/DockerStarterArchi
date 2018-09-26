@@ -4,6 +4,8 @@ Sample app using:
 - NodeJS Docker Node
 - Angular web appplication (Angular CLI 6.2.1) Docker Node
 - ASP .Net Core 2.1 Web API Node 
+- MongoDB Node
+- MongoDB Seed used to populate the MongoDB
 
 # Using docker-compose
 
