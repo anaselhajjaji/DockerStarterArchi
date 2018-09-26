@@ -31,12 +31,21 @@ package "Backend Network (backendnet)" {
         nodeJS REST API
     ]
 
+    node springbootapi [
+        <b>springboot REST API
+        ----
+        app: sample-springboot
+    ]
+
     node mongodb [
         <b>mongodb service
         ----
         image: mongo
         Mongo Database
     ]
+
+    [mongodb] -down- org.springframework.data.mongodb
+    org.springframework.data.mongodb -down- springbootapi
 
     node mongoseed [
         <b>mongo-seed service
@@ -46,16 +55,16 @@ package "Backend Network (backendnet)" {
         the MongoDB
     ]
 
-    [mongodb] -- mongoimport
-    mongoimport -- mongoseed
+    [mongodb] -up- mongoimport
+    mongoimport -up- mongoseed
 
     [nodejsrestapi] -- pgAPI
     pgAPI -- postgresdb
 }
 
-[nodejsrestapi] -- REST_JSON_GET_USERS
-[nodejsrestapi] -- REST_JSON_POST_USER
+[nodejsrestapi] -- REST_JSON_GET_POST_USERS
 [netcoreapi] -- REST_JSON_POST_CIPHER_DATA
+[springbootapi] -up- REST_JSON_GET_POST_PUT_DEL_USERS
 
 component browser [
     <b>Browser
@@ -64,8 +73,8 @@ component browser [
 [angularwebsite] -- nginx
 nginx -- browser
 
-browser -up- REST_JSON_GET_USERS
-browser -up- REST_JSON_POST_USER
+browser -up- REST_JSON_GET_POST_USERS
 browser -up- REST_JSON_POST_CIPHER_DATA
+browser -down- REST_JSON_GET_POST_PUT_DEL_USERS
 
 @enduml
