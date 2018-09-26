@@ -6,6 +6,7 @@ Sample app using:
 - ASP .Net Core 2.1 Web API Node 
 - MongoDB Node
 - MongoDB Seed used to populate the MongoDB
+- springboot Docker Node
 
 # Using docker-compose
 
