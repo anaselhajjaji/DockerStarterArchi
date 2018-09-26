@@ -31,6 +31,24 @@ package "Backend Network (backendnet)" {
         nodeJS REST API
     ]
 
+    node mongodb [
+        <b>mongodb service
+        ----
+        image: mongo
+        Mongo Database
+    ]
+
+    node mongoseed [
+        <b>mongo-seed service
+        ----
+        app: mongo-seed-populate
+        Container used to initialize 
+        the MongoDB
+    ]
+
+    [mongodb] -- mongoimport
+    mongoimport -- mongoseed
+
     [nodejsrestapi] -- pgAPI
     pgAPI -- postgresdb
 }
