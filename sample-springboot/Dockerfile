@@ -6,4 +6,4 @@ RUN mvn package
 WORKDIR /usr/src/java-app
 RUN cp /usr/src/java-code/target/*.jar ./app.jar
 EXPOSE 8080
-ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/app.jar"]
+ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/usr/src/java-app/app.jar"]
