@@ -8,17 +8,11 @@ app.use(cors()); // Enable All CORS Requests
 app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 
-// Variables
-var PGUSER = 'anas'
-var PGUSERPWD = 'anaspwd'
-var PGDATABASE = 'usersdb'
-var PGHOST = 'postgresdb' // get the ip address from docker-compose
-
 var config = {
-  host: PGHOST,
-  user: PGUSER, // name of the user account
-  password: PGUSERPWD,
-  database: PGDATABASE, // name of the database
+  host: process.env.POSTGRESQL_HOST_NAME,
+  user: process.env.POSTGRESQL_DATABASE_USER, // name of the user account
+  password: process.env.POSTGRESQL_DATABASE_USER_PASSWORD,
+  database: process.env.POSTGRESQL_DATABASE_NAME, // name of the database
   max: 10, // max number of clients in the pool
   idleTimeoutMillis: 30000 // how long a client is allowed to remain idle before being closed
 }
@@ -78,7 +72,7 @@ app.get('/api/list', function (req, res) {
   })
 })
 
-var server = app.listen(8080, function () {
+var server = app.listen(process.env.NODEJS_LISTEN_PORT_NUMBER, function () {
   var host = server.address().address
   var port = server.address().port
   console.log("App listening at http://%s:%s", host, port)

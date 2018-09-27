@@ -8,11 +8,12 @@ networks:
 
 services:
   postgresdb:
+    hostname: ${POSTGRESQL_HOST_NAME}
     build: ./postgresql-node
     networks:
       - backendnet
     ports:
-      - 5432:5432
+      - ${POSTGRESQL_PORT_NUMBER}:${POSTGRESQL_PORT_NUMBER}
   
   netcoreapi:
     build: ./netcoreapi-node
@@ -26,7 +27,14 @@ services:
     networks:
       - backendnet
     ports:
-      - 8080:8080
+      - ${NODEJS_LISTEN_PORT_NUMBER}:${NODEJS_LISTEN_PORT_NUMBER}
+    environment:
+      POSTGRESQL_HOST_NAME: ${POSTGRESQL_HOST_NAME}
+      POSTGRESQL_PORT_NUMBER: ${POSTGRESQL_PORT_NUMBER}
+      POSTGRESQL_DATABASE_NAME: ${POSTGRESQL_DATABASE_NAME}
+      POSTGRESQL_DATABASE_USER: ${POSTGRESQL_DATABASE_USER}
+      POSTGRESQL_DATABASE_USER_PASSWORD: ${POSTGRESQL_DATABASE_USER_PASSWORD}
+      NODEJS_LISTEN_PORT_NUMBER: ${NODEJS_LISTEN_PORT_NUMBER}
     depends_on:
       - postgresdb
 
