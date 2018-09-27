@@ -27,7 +27,7 @@ services:
     networks:
       - backendnet
     ports:
-      - ${NODEJS_LISTEN_PORT_NUMBER}:${NODEJS_LISTEN_PORT_NUMBER}
+      - ${NODEJS_PORT_NUMBER}:${NODEJS_PORT_NUMBER}
     environment:
       POSTGRESQL_HOST_NAME: ${POSTGRESQL_HOST_NAME}
       POSTGRESQL_PORT_NUMBER: ${POSTGRESQL_PORT_NUMBER}

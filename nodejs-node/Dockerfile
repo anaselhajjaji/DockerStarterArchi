@@ -15,5 +15,5 @@ RUN npm install
 # Bundle app source
 COPY . .
 
-EXPOSE ${NODEJS_LISTEN_PORT_NUMBER}
+EXPOSE ${NODEJS_PORT_NUMBER}
 CMD [ "npm", "start" ]
