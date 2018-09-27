@@ -72,7 +72,7 @@ app.get('/api/list', function (req, res) {
   })
 })
 
-var server = app.listen(process.env.NODEJS_LISTEN_PORT_NUMBER, function () {
+var server = app.listen(process.env.NODEJS_PORT_NUMBER, function () {
   var host = server.address().address
   var port = server.address().port
   console.log("App listening at http://%s:%s", host, port)
