@@ -44,17 +44,22 @@ services:
       - backendnet
     ports:
       - ${SPRINGBOOTAPI_PORT_NUMBER}:8080
+    environment:
+      spring.data.mongodb.host: ${MONGODB_HOST_NAME}
+      spring.data.mongodb.port: ${MONGODB_PORT_NUMBER}
+      spring.data.mongodb.database: ${MONGODB_DATABASE_NAME}
     command: mvn clean spring-boot:run
     depends_on:
       - mongodb
 
   mongodb:
     image: mongo
+    hostname: ${MONGODB_HOST_NAME}
     networks:
       - backendnet
     ports:
       - ${MONGODB_PORT_NUMBER}:27017
-
+    
   mongo-seed:
     build: ./mongo-seed-populate
     networks:
