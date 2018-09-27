@@ -20,7 +20,7 @@ services:
     networks:
       - backendnet
     ports:
-      - 8081:80
+      - ${NETCOREAPI_PORT_NUMBER}:80
 
   nodejsrestapi:
     build: ./nodejs-node
@@ -43,7 +43,7 @@ services:
     networks:
       - backendnet
     ports:
-      - 8082:8080
+      - ${SPRINGBOOTAPI_PORT_NUMBER}:8080
     command: mvn clean spring-boot:run
     depends_on:
       - mongodb
@@ -53,13 +53,13 @@ services:
     networks:
       - backendnet
     ports:
-      - "27017:27017"
+      - ${MONGODB_PORT_NUMBER}:27017
 
   mongo-seed:
     build: ./mongo-seed-populate
     networks:
       - backendnet
-    links:
+    depends_on:
       - mongodb
 
   angularwebsite:
@@ -67,4 +67,4 @@ services:
     networks:
       - frontendnet
     ports:
-      - 80:80
+      - ${ANGULAR_PORT_NUMBER}:80
